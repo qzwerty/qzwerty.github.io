@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      BitBlaze: A New Approach to Computer Security via Binary Analysis
+title:      (BitBlaze) A New Approach to Computer Security via Binary Analysis
 subtitle:   ICISS 2008
 date:       2020-03-11
 author:     qzwerty
@@ -12,7 +12,7 @@ tags:
 
 ---
 
-## BitBlaze: A New Approach to Computer Security via Binary Analysis
+## (BitBlaze) A New Approach to Computer Security via Binary Analysis
 
 > BitBlaze是一个通过二进制分析来实现计算机安全的新方法。特别关注于构建一个统一的二进制分析平台，并使用它来为各种不同的安全问题提供新的解决方案。二进制分析平台的设计目的是支持准确的分析，提供可扩展的体系结构，并结合静态和动态分析以及程序验证技术，以满足安全应用程序的常见需求。通过直接从二进制程序中提取出与安全相关的属性，BitBlaze提供了一种原则性的、基于root-cause的方法，保护计算机安全，提供了新颖而有效的解决方案。
 
