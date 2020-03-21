@@ -110,7 +110,7 @@ Vine IL中的基本类型是1、8、16、32位寄存器（即n bit向量）和�
 如mem_t（little，reg32_t）表示内存类型是小端字节，并且由32位数字寻址。
 ```
 
-Vine有三种类型的值。首先，在类型 τ<sub>reg</sub> 中有数字n。其次，Vine有内存值{n<sub>a1</sub>  $\rightarrow$ n<sub>v1</sub>，n~a2~ $\rightarrow$ n<sub>v2</sub>，...}，其中，n~ai~表示用作地址的数字，n~vi~表示存储在该地址的值。最后，Vine有一个特殊值⊥。⊥值不会暴露给用户，不能用于表示语言的构造。⊥ 用于在内部指示执行失败。
+Vine有三种类型的值。首先，在类型 τ<sub>reg</sub> 中有数字n。其次，Vine有内存值< img src="http://chart.googleapis.com/chart?cht=tx&chl= {n<sub>a1</sub>  $\rightarrow$ n<sub>v1</sub>，n~a2~ $\rightarrow$ n<sub>v2</sub>，...}" style="border:none;">，其中，n~ai~表示用作地址的数字，n~vi~表示存储在该地址的值。最后，Vine有一个特殊值⊥。⊥值不会暴露给用户，不能用于表示语言的构造。⊥ 用于在内部指示执行失败。
 
 Vine有三种类型的值。首先，在类型 τ<sub>reg</sub> 中有数字n。其次，Vine有内存值{n<sub>a1</sub>  $\rightarrow$ n<sub>v1</sub>，n~a2~ $\rightarrow$ n<sub>v2</sub>，...}，其中，n~ai~表示用作地址的数字，n~vi~表示存储在该地址的值。最后，Vine有一个特殊值⊥。⊥值不会暴露给用户，不能用于表示语言的构造。⊥ 用于在内部指示执行失败。
 
