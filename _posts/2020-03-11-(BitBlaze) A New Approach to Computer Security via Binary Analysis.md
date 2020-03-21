@@ -110,11 +110,9 @@ Vine IL中的基本类型是1、8、16、32位寄存器（即n bit向量）和�
 如mem_t（little，reg32_t）表示内存类型是小端字节，并且由32位数字寻址。
 ```
 
-Vine有三种类型的值。首先，在类型 τ<sub>reg</sub> 中有数字n。其次，Vine有内存值 {n<sub>a1</sub>  $\rightarrow$ n<sub>v1</sub>，n~a2~ $\rightarrow$ n<sub>v2</sub>，...}，其中，n~ai~表示用作地址的数字，n~vi~表示存储在该地址的值。最后，Vine有一个特殊值⊥。⊥值不会暴露给用户，不能用于表示语言的构造。⊥ 用于在内部指示执行失败。
+Vine有三种类型的值。首先，在类型 τ<sub>reg</sub> 中有数字n。其次，Vine有内存值 {n<sub>a1</sub>  $\rightarrow$ n<sub>v1</sub>，n<sub>a2</sub> $\rightarrow$ n<sub>v2</sub>，...}，其中，n<sub>ai</sub>表示用作地址的数字，n<sub>vi</sub>表示存储在该地址的值。最后，Vine有一个特殊值⊥。⊥值不会暴露给用户，不能用于表示语言的构造。⊥ 用于在内部指示执行失败。
 
-Vine有三种类型的值。首先，在类型 τ<sub>reg</sub> 中有数字n。其次，Vine有内存值{n<sub>a1</sub>  $\rightarrow$ n<sub>v1</sub>，n~a2~ $\rightarrow$ n<sub>v2</sub>，...}，其中，n~ai~表示用作地址的数字，n~vi~表示存储在该地址的值。最后，Vine有一个特殊值⊥。⊥值不会暴露给用户，不能用于表示语言的构造。⊥ 用于在内部指示执行失败。
-
-Vine中的表达式是没有副作用的。Vine IL有二元操作$\diamondsuit_b$(“&” 和 “ | ” 是按位的)、一元操作$\diamondsuit_u$、常量、let绑定和强制类型转换（casting）。
+Vine中的表达式是没有副作用的。Vine IL有二元操作$\diamondsuit_b$(“&” 和 “ I ” 是按位的)、一元操作$\diamondsuit_u$、常量、let绑定和强制类型转换（casting）。
 
 Casting：当语义需要改变值的宽度时使用。如，x86中`eax`较低的8位称为`al`，在提升x86指令时，当访问到`al`时，我们使用强制类型转换将相应`eax`寄存器变量的低位投射到`al`寄存器变量。
 
