@@ -116,7 +116,7 @@ Vine有三种类型的值。首先，在类型 τ<sub>reg</sub> 中有数字n。
 
 Vine中的表达式是没有副作用的。Vine IL有二元操作$\diamondsuit_b$(“&” 和 “ | ” 是按位的)、一元操作$\diamondsuit_u$、常量、let绑定和强制类型转换（casting）。
 
-```Casting：当语义需要改变值的宽度时使用。如，x86中`eax`较低的8位称为`al`，在提升x86指令时，当访问到`al`时，我们使用强制类型转换将相应`eax`寄存器变量的低位投射到`al`寄存器变量。```
+Casting：当语义需要改变值的宽度时使用。如，x86中`eax`较低的8位称为`al`，在提升x86指令时，当访问到`al`时，我们使用强制类型转换将相应`eax`寄存器变量的低位投射到`al`寄存器变量。
 
 在Vine中，`load`和`store`操作都是pure的。`load`通常都是pure的，但`store`的语义通常不是。每个`store`表达式必须指定要从哪个内存加载或存储。结果的内存作为返回值。如，一个Vine存储操作写作`mem1 = store(mem0,a,y)`，除了地址`a`有值`y`以外，`mem1`和`mem0`相同。Vine标记法的pure内存操作的优点是，可以从语法上分析哪些内存被修改或读取。我们在计算SSA（Single Static Assignment）时利用了这一点，其中标量和内存都有唯一的SSA位置。
 
@@ -133,13 +133,13 @@ Vine中的特殊调用`special`对应于对外部定义的过程或函数的调�
 小端模式，是指数据的高字节保存在内存的高地址中，而数据的低字节保存在内存的低地址中，这种存储模式将地址的高低和数据位权有效地结合起来，高地址部分权值高，低地址部分权值低。
 ```
 
-![image-20200314201759548](/Users/quze/Library/Application Support/typora-user-images/image-20200314201759548.png)
+![](https://tva1.sinaimg.cn/large/00831rSTgy1gd1szr7ih5j30ys0fejuo.jpg)
 
 在分析内存访问时，必须注意字节序。考虑图3a中的汇编代码。第1行上的mov操作按小端序向内存写入4个字节(因为x86是小端序)。在执行第1行之后，`eax`给出的地址包含字节`0xdd`, `eax+1`包含字节`0xcc`，等等，如图3b所示。第2行和第3行设置`ebx = eax+3`。第4行和第5行将16位值`0x1122`写入`ebx`。对这几行代码的分析需要考虑第4行的写操作会覆盖第1行的最后一个字节，如图3c所示。考虑这些情况需要在每个分析中添加额外的逻辑。例如，第7行加载的值将包含来自两个存储的每个字节。[x86汇编快速入门](https://www.cnblogs.com/jiftle/p/8453106.html)。
 
 如果所有的加载和存储都恰好是b字节和b字节对齐的，那么内存就被规范化为b字节可寻址内存。如，x86中，内存是字节可寻址的，那么x86规范化内存会让所有的加载和存储在字节级别上处理。图3a中第1行的写操作的规范化形式如图4。注意，第7行的后续负载是相对于当前内存`mem6`的。（图啥意思没看懂。。。。）
 
-![image-20200314211528623](/Users/quze/Library/Application Support/typora-user-images/image-20200314211528623.png)
+![](https://tva1.sinaimg.cn/large/00831rSTgy1gd1t11d5b2j30us0egq64.jpg)
 
 规范化内存使编写涉及内存的程序分析变得更容易。因为规范化的内存语法暴露内存更新，而这些更新是被endianness隐式定义的。Vine后端提供用于规范化所有内存操作的实用程序。
 
@@ -237,7 +237,7 @@ TEMU的设计基于以下几个方面的挑战和考虑：
 
   基于这些考量，我们设计的TEMU架构如图5。
 
-  ![image-20200317235130473](/Users/quze/Library/Application Support/typora-user-images/image-20200317235130473.png)
+  ![](https://tva1.sinaimg.cn/large/00831rSTgy1gd1t1rjs5oj30hm0acjs4.jpg)
 
 semantics extractor用于从emulated system中提取OS级语义信息。taint analysis engine用于执行动态污点分析。设计实现了接口TEMU API以便用户开发自己的分析模块（即TEMU插件）。这些模块可以在进行时装载或者卸载，
 
@@ -321,7 +321,7 @@ TEMU由C和C++实现。由于C的高效性，性能要求高的代码由C实现�
 
 Rudder用于进行二进制级别的具体+符号混合执行。给定二进制程序和符号输入规范，Rudder可以进行具体+符号混合执行，在路径条件依赖于符号输入的情况下探索多条执行路径。这样，Rudder可以自动发现只在某些情况下出现的隐藏行为。
 
-![image-20200319232312922](/Users/quze/Library/Application Support/typora-user-images/image-20200319232312922.png)
+![image-20200319232312922](https://tva1.sinaimg.cn/large/00831rSTgy1gd1t408xl7j30hi07adgn.jpg)
 
 图6展示了Rudder的结构。Rudder由以下部分组成：mixed execution engine负责执行具体+符号混合执行。path selector负责执行路径的优先级和选择哪一条。solver负责判断符号路径谓词，决定路径是否可行。输入是一个二进制程序和符号输入规范。在TEMU中执行和监控二进制程序。Rudder作为TEMU的插件运行，用来测量二进制程序的执行。在执行过程中，Rudder根据符号输入规范把部分输入标记为符号。然后mixed execution engine对「符号输入的操作和从符号输入计算出的数据」进行符号执行。当在分支指令中执行某个符号值时，path selector会在solver的辅助下，确定哪些分支是可行的，并选择要探索的分支。
 
