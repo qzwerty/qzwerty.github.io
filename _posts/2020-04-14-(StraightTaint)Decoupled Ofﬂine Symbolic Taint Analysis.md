@@ -7,8 +7,7 @@ author:     qzwerty
 header-img: img/blog-bj-1.png
 catalog: true
 tags:
-    - RR  
-    - security analysis 
+    - RR security
 
 
 
