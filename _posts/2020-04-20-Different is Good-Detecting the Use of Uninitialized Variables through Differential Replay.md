@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Different is Good/ Detecting the Use of Uninitialized Variables through Differential Replay
+title:      Different is Good-Detecting the Use of Uninitialized Variables through Differential Replay
 subtitle:   ccs19
 date:       2020-04-20
 author:     qzwerty
@@ -14,7 +14,7 @@ tags:
 
 ---
 
-## Different is Good/ Detecting the Use of Uninitialized Variables through Differential Replay
+## Different is Good-Detecting the Use of Uninitialized Variables through Differential Replay
 
 使用未初始化的变量是一个常见的问题。它可能导致内核信息泄露，从而破坏广泛部署的安全防御，即，内核地址空间布局随机化（KASLR）。尽管最近一个名为Bochspwn Reloaded的系统报告了Windows内核中的多个内存泄露，但如何有效检测这个问题仍然是一个很大的问题。
 
